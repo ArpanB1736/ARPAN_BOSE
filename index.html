@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Editor Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#050505;color:#fff;overflow-x:hidden;}
+
+/* Animated Background */
+body::before{
+ content:"";
+ position:fixed;
+ width:200%;
+ height:200%;
+ background:radial-gradient(circle,#00f7ff22,#ff00c822,#000);
+ animation:moveBg 10s linear infinite;
+ z-index:-1;
+}
+@keyframes moveBg{0%{transform:translate(0,0);}50%{transform:translate(-25%,-25%);}100%{transform:translate(0,0);}}
+
+header{position:fixed;width:100%;display:flex;justify-content:space-between;padding:20px 50px;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);z-index:1000;}
+header h1{color:#00f7ff;font-weight:800;}
+
+nav a{margin:0 15px;text-decoration:none;color:#fff;}
+nav a:hover{color:#ff00c8;}
+
+.hire-btn{padding:8px 18px;background:linear-gradient(90deg,#ff00c8,#00f7ff);border-radius:20px;color:#000;font-weight:bold;cursor:pointer;}
+
+.dropdown{position:absolute;top:70px;right:50px;background:#111;padding:15px;border-radius:10px;display:none;}
+.dropdown a{display:block;color:#fff;margin:10px 0;text-decoration:none;}
+.dropdown a:hover{color:#00f7ff;}
+
+section{padding:25px 10%;min-height:100vh;}
+
+.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:100vh;}
+.hero h2{font-size:70px;font-weight:800;background:linear-gradient(90deg,#00f7ff,#ff00c8,#00ff88);-webkit-background-clip:text;color:transparent;}
+.hero p{margin-top:20px;font-size:20px;color:#ccc;}
+
+.btn{margin-top:30px;padding:12px 30px;background:linear-gradient(90deg,#00f7ff,#ff00c8);border:none;color:#000;font-weight:bold;cursor:pointer;border-radius:30px;}
+
+.card{background:#111;padding:25px;border-radius:15px;margin-top:20px;box-shadow:0 0 20px #00f7ff22;transition:0.4s;}
+.card:hover{transform:translateY(-10px) scale(1.03);box-shadow:0 0 30px #ff00c855;}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:25px;}
+iframe{width:100%;height:220px;border:none;border-radius:10px;}
+
+h2{font-size:40px;margin-bottom:20px;background:linear-gradient(90deg,#ff00c8,#00f7ff);-webkit-background-clip:text;color:transparent;}
+
+/* COLORFUL TEXT */
+p, li{
+ background:linear-gradient(90deg,#ffffff,#00f7ff,#ff00c8);
+ -webkit-background-clip:text;
+ color:transparent;
+}
+
+.about-box{display:flex;gap:40px;flex-wrap:wrap;align-items:center;}
+.about-box img{width:350px;height:350px;object-fit:cover;border-radius:20px;}
+.about-box p{flex:1;font-size:24px;}
+
+.skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:20px;text-align:justify;}
+.skill-grid img{width:80px;margin-bottom:10px;}
+
+.provide{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
+.provide div{background:linear-gradient(45deg,#ff00c8,#00f7ff);padding:20px;border-radius:15px;color:#000;font-weight:bold;}
+
+.celebs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;text-align:justify;}
+.celebs img{width:100%;height:250px;object-fit:cover;border-radius:15px;}
+.celebs div{background:linear-gradient(90deg,#79d8e9,#020202);padding:20px;border-radius:15px;color:#000;font-weight:bold;}
+.celebs.show{opacity:1;transform:translateY(0);}
+
+.fade{opacity:0;transform:translateY(60px);transition:1s;}
+.fade.show{opacity:1;transform:translateY(0);}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>ARPAN BOSE</h1>
+<nav>
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#videos">Work</a>
+<a href="#experience">Experience</a>
+</nav>
+<div class="hire-btn" onclick="toggleMenu()">WORK WITH ME </div>
+<div class="dropdown" id="menu">
+<a href="https://www.linkedin.com/in/arpan-bose-100598353?utm_source=share_via&utm_content=profile&utm_medium=member_ios">LinkedIn</a>
+<a href="https://www.instagram.com/arpan___17?igsh=dmUxbnhkb3dtcGM4&utm_source=qr">Instagram</a>
+<a href="arpanbose540@gmail.com">Gmail</a>
+<a href="+919883360123">WhatsApp</a>
+</div>
+</header>
+
+<section class="hero" id="home">
+<h2>I Make Videos That People Don’t Skip.</h2>
+<p>I’m Arpan Bose, a Video Editor specializing in cinematic brand content and
+high-retention visuals. I’ve worked on projects involving celebrities and brands, crafting
+videos that grab attention and keep audiences engaged.</p>
+<button class="btn" onclick="document.getElementById('videos').scrollIntoView({behavior:'smooth'})">Watch My Work</button>
+</section>
+
+<section id="about" class="fade">
+<h2>About Me</h2>
+<div class="card about-box">
+<img src="seta_chobi.jpeg">
+<p>I’m Arpan Bose, a Video Editor focused on creating cinematic brand
+videos and high-impact visual content.
+I’ve had the opportunity to work on projects involving celebrities and
+brand campaigns, where storytelling and visual quality matter the most.
+My approach is simple—every video should not only look great but also
+hold attention and deliver a strong message. I focus on pacing, visuals,
+and detail to create content that stands out..</p>
+</div>
+</section>
+
+<section id="videos" class="fade">
+<h2>My Work</h2>
+<div class="grid">
+
+<div class="card">
+  <div class="video-frame">
+  <iframe 
+    src="https://drive.google.com/file/d/1CSja6EIpQQVCgA2FKmJVy4B7bXNxlrqH/preview" 
+    width="100%" 
+    height="100%" 
+    allow="autoplay">
+  </iframe>
+  </div>
+</div>
+
+<div class="card">
+  <div class="video-frame">
+  <iframe 
+    src="https://drive.google.com/file/d/1jARUbsds24CuY19F7HzOcZ01un1Cw6g1/preview" 
+    width="100%" 
+    height="100%" 
+    allow="autoplay">
+  </iframe>
+  </div>
+</div>
+
+<div class="card">
+  <div class="video-frame">
+  <iframe 
+    src="https://drive.google.com/file/d/1gcGTAETNXNmaugn4EvWNO6Cvb5sVuKIu/preview" 
+    width="100%" 
+    height="100%" 
+    allow="autoplay">
+  </iframe>
+  </div>
+</div>
+
+<div class="card">
+  <div class="video-frame">
+  <iframe 
+    src="https://drive.google.com/file/d/1EG_vn9EaP0YktYxkryt7jlE6Sccbr-Xj/preview" 
+    width="100%" 
+    height="100%" 
+    allow="autoplay">
+  </iframe>
+  </div>
+</div>
+
+<div class="card">
+  <div class="video-frame">
+  <iframe 
+    src="https://drive.google.com/file/d/1X2DQmyIWTluotKRfkxyqHo8MBvtwnT_8/preview" 
+    width="100%" 
+    height="100%" 
+    allow="autoplay">
+  </iframe>
+  </div>
+</div>
+
+<div class="card">
+  <div class="video-frame">
+  <iframe 
+    src="https://drive.google.com/file/d/1JRD6kCC-s9XaijtLcQlrcd0KGgefCFoq/preview" 
+    width="100%" 
+    height="100%" 
+    allow="autoplay">
+  </iframe>
+  </div>
+</div>
+<style>.video-frame{
+ width:100%;
+ max-width:100%;   /* balanced size */
+ height:240px;      /* fixed height (prevents cut issue) */
+ margin:auto;
+ border-radius:6px;
+ overflow:hidden;
+ background:#000;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+}
+
+.video-frame iframe{
+ width:100%;
+ height:100%;
+ border:none;
+}
+.grid{
+ display:grid;
+ grid-template-columns:repeat(3, 1fr); /* keeps pattern */
+ gap:25px;
+ justify-items:center;
+}
+.card{
+ padding:10px;
+ background:#0d0d0d;
+ border-radius:15px;
+}
+</style>
+</div>
+</section>
+</section>
+
+<section id="experience" class="fade">
+<h2>Experience</h2>
+<div class="card">
+<p>✨ 2+ Years of experience in video editing</p>
+<p>🎬 Worked on brand campaigns and promotional content </p>
+<p>🔥 Experience working on projects involving celebrities</p>
+<p>✨ Foucused on creating engaging and high-retention videoes</p>
+<p>🔥 Diploma in VFX Filmmaking & editing </p>
+</div>
+</section>
+
+<section class="fade">
+<h2>Celebrity Work</h2>
+<div class="celebs">
+<div><img src="img1.jpg">
+  <p>Sreenanda Shankar is an Indian actress</p><p>model and dancer with 4.3L Followers</p>
+</div>
+<div><img src="img2.jpg">
+  <p>Richa Sharma is an Indian actress </p><p>Mrs. India & Universe With 2.6M Followers</p>
+</div>
+<div><img src="img3.jpg">
+  <p>Amrita Debnath is an Indian actress</p><p>model & Internet personality With 1.3L Followers</p>
+</div>
+<div><img src="img4.jpg">
+  <p>Angana Roy is an Indian actress</p><p>primarily works in the Bengali and Hindi film industry</p><p>With 2.1L Followers</p>
+</div>
+<div><img src="img5.jpg">
+  <p>Koneenica Banerjee is an Tollywood actress</p><p>predominantly appears in Bengali films and serials</p><p>With 2.3L Followers</p>
+</div>
+</div>
+</section>
+
+<section class="fade">
+<h2>What I Provide</h2>
+<div class="grid">
+<div class="card">🎬 High-Quality Video Editing
+Clean, cinematic edits focused on storytelling and smooth pacing</div>
+<div class="card">⚡ Engaging Short-Form Content
+Reels and short videos designed to capture attention and boost retention</div>
+<div class="card">🏆 Brand-Focused Visuals
+Professional edits tailored for brand identity and promotional content</div>
+<div class="card">🎨 Cinematic Color Grading
+Polished color correction to enhance mood and visual appeal</div>
+<div class="card">🚀 Fast Turnaround & Reliable Delivery
+Timely delivery with consistent quality across every project</div>
+</div>
+</section>
+
+<section class="fade">
+<h2>Pricing</h2>
+<div class="grid">
+<div class="card"><h3 style="color:#00f7ff">🎬 SHORT-FORM EDITING</h3><h4>Starting from ₹549 / video</h4><p>✔ Engaging cuts & smooth transitions</p><p>✔ Optimized for reels & short content</p><p>✔ Clean and professional output</p><p>✔ 5 revisions included</p><p>✖ Caption/Subtitles not included</p></div>
+<div class="card"><h3 style="color:#00ff88">📦 SHORT-FORM PACKAGE (3 Videos)</h3><h4>Starting from ₹1,599</h4><p>✔ 3 consistent, high-quality edits</p><p>✔ Optimized for social media platforms</p><p>✔ Faster turnaround time</p><p>✔ 7 revisions included</p><p>✔ Captions/Subtitles included (if needed)</p></div>
+<div class="card"><h3 style="color:#ff00c8">🎥 LONG-FORM EDITING (Up to 3 min)</h3><h4>Starting from ₹1,249 / video</h4><p>✔ Structured storytelling & smooth pacing</p><p>✔ Clean cuts with seamless flow</p><p>✔ B-rolls integration for better engagement</p><p>✔ 3 revisions included</p><p>✖ Advanced motion graphics not included</p></div>
+<div><h3 STYLE="COLOR:rgb(142, 198, 235)"> NOTE</h3> <P>✔Pricing depends on video length, complexity, and quality requirements</P><P>✔ Prices mentioned above are starting estimates and may vary per project</P></div>
+</div>
+<div style="text-align:center;margin-top:40px;">
+<button class="btn" onclick="toggleMenu()">WORK WITH ME</button>
+</div>
+</section>
+
+<script>
+function toggleMenu(){
+ const menu=document.getElementById('menu');
+ menu.style.display = menu.style.display==='block'?'none':'block';
+}
+
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+ faders.forEach(el=>{
+  const rect=el.getBoundingClientRect();
+  if(rect.top < window.innerHeight - 100){el.classList.add('show');}
+ });
+});
+</script>
+<style>
+  /* 📱 MOBILE RESPONSIVE FIX */
+@media (max-width: 768px){
+
+ header{
+  padding:15px 20px;
+  flex-direction:column;
+  gap:10px;
+ }
+
+ nav{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+ }
+
+ nav a{
+  margin:5px 10px;
+  font-size:14px;
+ }
+
+ .hero h2{
+  font-size:32px;
+ }
+
+ .hero p{
+  font-size:14px;
+  padding:0 10px;
+ }
+
+ section{
+  padding:80px 5%;
+ }
+
+ /* 📽️ VIDEO GRID */
+ .grid{
+  grid-template-columns:1fr;   /* 1 video per row */
+ }
+
+ .video-frame{
+  max-width:100%;
+  height:400px;
+ }
+
+ /* 👤 ABOUT SECTION */
+ .about-box{
+  flex-direction:column;
+  text-align:center;
+ }
+
+ .about-box img{
+  width:100%;
+  max-width:250px;
+ }
+
+ /* 🌟 CELEB SECTION */
+ .celeb-grid{
+  grid-template-columns:1fr 1fr;
+ }
+
+ /* 💰 PRICING */
+ .grid{
+  grid-template-columns:1fr;
+ }
+
+}
+
+</style>
+
+</body>
+</html>
